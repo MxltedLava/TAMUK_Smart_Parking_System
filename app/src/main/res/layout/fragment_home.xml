@@ -36,7 +36,7 @@
         tools:ignore="HardcodedText"
         tools:textAlignment="center"
         tools:textColor="#000000"
-        tools:textSize="26" />
+        tools:textSize="26sp" />
 
     <TextView
         android:id="@+id/textView6"
@@ -56,7 +56,7 @@
         tools:ignore="HardcodedText,VisualLintOverlap"
         tools:textAlignment="center"
         tools:textColor="#000000"
-        tools:textSize="26" />
+        tools:textSize="26sp" />
 
     <TextView
         android:id="@+id/textView5"
@@ -76,7 +76,7 @@
         tools:ignore="HardcodedText,VisualLintOverlap"
         tools:textAlignment="center"
         tools:textColor="#000000"
-        tools:textSize="28" />
+        tools:textSize="28sp" />
 
     <TextView
         android:id="@+id/textView4"
@@ -98,7 +98,7 @@
         tools:ignore="HardcodedText"
         tools:textAlignment="center"
         tools:textColor="#000000"
-        tools:textSize="23" />
+        tools:textSize="23sp" />
 
     <TextView
         android:id="@+id/textView"
@@ -128,7 +128,7 @@
         android:layout_marginEnd="50dp"
         android:background="#F5F861"
         android:clickable="false"
-        android:text="Texas A&amp;M University Kingsville"
+        android:text="Texas A&amp;M University Kings ville"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
