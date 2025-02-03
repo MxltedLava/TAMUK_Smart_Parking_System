@@ -3,25 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Parking System</title>
+    <title>Login - TAMUK Parking</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>Smart Parking System</h1>
-    </header>
-    <main>
-        <section id="parking-info">
-            <h2>Available Parking Spots</h2>
-            <div id="parking-spots">
-                <!-- Spots will be dynamically generated -->
-            </div>
-        </section>
-        <section id="user-actions">
-            <h2>Book a Parking Spot</h2>
-            <button id="bookSpot">Book a Spot</button>
-        </section>
-    </main>
+    <div class="container">
+        <h1>TAMUK Smart Parking System</h1>
+        
+        <!-- Login Form -->
+        <div class="login-box">
+            <h2>Login</h2>
+            <form id="login-form">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <!-- Create Account Section -->
+        <div class="register-box">
+            <h2>Create an Account</h2>
+            <form id="register-form">
+                <label for="new-username">Username:</label>
+                <input type="text" id="new-username" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" required>
+
+                <label for="new-password">Password:</label>
+                <input type="password" id="new-password" required>
+
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

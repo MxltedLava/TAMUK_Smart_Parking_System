@@ -1,45 +1,47 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-    color: #333;
+    background-color: #f4f4f4;
     text-align: center;
 }
 
-header {
-    background-color: #007bff;
-    padding: 10px;
-    color: white;
-}
-
-main {
+.container {
+    max-width: 500px;
+    margin: 50px auto;
     padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-#parking-spots {
-    display: flex;
-    gap: 10px;
-    margin: 20px auto;
-    justify-content: center;
+h1 {
+    color: #00205B;  /* TAMUK Blue */
 }
 
-.spot {
-    width: 50px;
-    height: 50px;
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
     border: 1px solid #ccc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #B9975B;  /* TAMUK Gold */
+    color: white;
+    border: none;
+    padding: 10px 15px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
-.available {
-    background-color: #28a745;
-    color: white;
+button:hover {
+    background-color: #8c6a2f;
 }
 
-.booked {
-    background-color: #dc3545;
-    color: white;
+.register-box, .login-box {
+    margin-top: 30px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

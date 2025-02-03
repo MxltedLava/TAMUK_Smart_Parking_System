@@ -1,38 +1,47 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const parkingSpotsContainer = document.getElementById('parking-spots');
-    const bookSpotButton = document.getElementById('bookSpot');
+// Handle login form submission
+document.getElementById('login-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+    
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-    // Initialize parking spots (example: 10 spots)
-    const totalSpots = 10;
-    let parkingSpots = Array(totalSpots).fill(true); // 'true' means spot is available
+    const response = await fetch('http://127.0.0.1:5000/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+    });
 
-    // Render parking spots
-    function renderSpots() {
-        parkingSpotsContainer.innerHTML = '';
-        parkingSpots.forEach((isAvailable, index) => {
-            const spotDiv = document.createElement('div');
-            spotDiv.className = `spot ${isAvailable ? 'available' : 'booked'}`;
-            spotDiv.textContent = index + 1;
-            spotDiv.onclick = () => alert(`Spot ${index + 1} is ${isAvailable ? 'available' : 'booked'}`);
-            parkingSpotsContainer.appendChild(spotDiv);
-        });
+    const result = await response.json();
+    if (response.ok) {
+        alert(result.message);
+        window.location.href = 'parking.html';
+    } else {
+        alert(result.error);
     }
+});
 
-    // Book a random available spot
-    function bookSpot() {
-        const availableIndex = parkingSpots.findIndex(spot => spot);
-        if (availableIndex >= 0) {
-            parkingSpots[availableIndex] = false;
-            renderSpots();
-            alert(`Spot ${availableIndex + 1} booked successfully!`);
-        } else {
-            alert('No available spots.');
-        }
+// Handle registration form submission
+document.getElementById('register-form').addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const newUsername = document.getElementById('new-username').value;
+    const email = document.getElementById('email').value;
+    const newPassword = document.getElementById('new-password').value;
+
+    const response = await fetch('http://127.0.0.1:5000/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username: newUsername, email, password: newPassword })
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+        alert(result.message);
+    } else {
+        alert(result.error);
     }
-
-    // Add event listener for booking
-    bookSpotButton.addEventListener('click', bookSpot);
-
-    // Initial render
-    renderSpots();
 });
