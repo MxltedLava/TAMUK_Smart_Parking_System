@@ -1,0 +1,45 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    text-align: center;
+}
+
+header {
+    background-color: #007bff;
+    padding: 10px;
+    color: white;
+}
+
+main {
+    padding: 20px;
+}
+
+#parking-spots {
+    display: flex;
+    gap: 10px;
+    margin: 20px auto;
+    justify-content: center;
+}
+
+.spot {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.available {
+    background-color: #28a745;
+    color: white;
+}
+
+.booked {
+    background-color: #dc3545;
+    color: white;
+}
