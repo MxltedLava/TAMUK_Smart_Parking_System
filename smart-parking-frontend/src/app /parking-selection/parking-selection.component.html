@@ -1,0 +1,15 @@
+<div class="container">
+  <h2>Select a Parking Lot</h2>
+  <select (change)="selectLot($event.target.value)">
+    <option value="">-- Choose a Lot --</option>
+    <option *ngFor="let lot of lots" [value]="lot">{{ lot }}</option>
+  </select>
+
+  <div *ngIf="selectedLot">
+    <h3>License Plate Verification</h3>
+    <input type="file" (change)="onFileSelected($event)">
+    <button (click)="validateParking()">Check Clearance</button>
+  </div>
+
+  <button class="logout" (click)="logout()">Logout</button>
+</div>
