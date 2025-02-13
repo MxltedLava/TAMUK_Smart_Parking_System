@@ -1,34 +1,25 @@
 {
-    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-    "version": 1,
-    "newProjectRoot": "projects",
-    "projects": {
-      "smart-parking-frontend": {
-        "projectType": "application",
-        "root": "",
-        "sourceRoot": "src",
-        "architect": {
-          "build": {
-            "builder": "@angular-devkit/build-angular:browser",
-            "options": {
-              "outputPath": "dist/smart-parking-frontend",
-              "index": "src/index.html",
-              "main": "src/main.ts",
-              "polyfills": "src/polyfills.ts",
-              "tsConfig": "tsconfig.app.json",
-              "assets": ["src/favicon.ico", "src/assets"],
-              "styles": ["src/styles.css"],
-              "scripts": []
-            }
-          },
-          "serve": {
-            "builder": "@angular-devkit/build-angular:dev-server",
-            "options": {
-              "browserTarget": "smart-parking-frontend:build"
-            }
-          }
-        }
-      }
-    },
-    "defaultProject": "smart-parking-frontend"
+  "name": "smart-parking-frontend",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "ng serve",
+    "build": "ng build"
+  },
+  "dependencies": {
+    "@angular/animations": "^16.0.0",
+    "@angular/common": "^16.2.12",
+    "@angular/compiler": "^16.0.0",
+    "@angular/core": "^16.2.12",
+    "@angular/forms": "^16.0.0",
+    "@angular/platform-browser": "^16.0.0",
+    "@angular/router": "^16.2.12",
+    "rxjs": "~7.8.0",
+    "zone.js": "~0.13.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~16.0.0",
+    "@angular/cli": "~16.0.0",
+    "@angular/compiler-cli": "~16.0.0",
+    "typescript": "~5.0.0"
   }
+}

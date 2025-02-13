@@ -1,35 +1,19 @@
 from flask import Flask, request, jsonify
-from database import get_db_connection
-import bcrypt
+import psycopg2
+from database import get_db_connection, check_vehicle_clearance
+from camera_processor import process_camera_feed
 
 app = Flask(__name__)
 
-# Register a new user
-@app.route('/register', methods=['POST'])
-def register():
-    data = request.json
-    username = data.get('username')
-    email = data.get('email')
-    password = data.get('password')
+# Validate license plate before allowing parking
+@app.route('/validate_parking', methods=['POST'])
+def validate_parking():
+    data = request.files.get("image")
+    lot = request.form.get("lot")
 
-    # Hash the password before storing it
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+    result = process_camera_feed(data, lot)
 
-    conn = get_db_connection()
-    if conn:
-        cur = conn.cursor()
-        try:
-            cur.execute("INSERT INTO students (username, email, password_hash) VALUES (%s, %s, %s)",
-                        (username, email, hashed_password))
-            conn.commit()
-            return jsonify({'message': 'Account created successfully'}), 201
-        except Exception as e:
-            return jsonify({'error': str(e)}), 400
-        finally:
-            cur.close()
-            conn.close()
+    if result["clearance"]:
+        return jsonify({"message": "Vehicle approved for parking", "plate": result["plate_number"]}), 200
     else:
-        return jsonify({'error': 'Database connection failed'}), 500
-
-if __name__ == '__main__':
-    app.run(debug=True)
+        return jsonify({"error": "Unauthorized vehicle", "plate": result["plate_number"]}), 403
