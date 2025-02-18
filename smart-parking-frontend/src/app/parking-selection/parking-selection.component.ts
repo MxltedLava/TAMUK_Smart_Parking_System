@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
-import { ParkingService } from '../services/parking.service';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { ParkingService } from '/Users/destinydelagarza/SmarkParkingSystem/TAMUK_Smart_Parking_System/smart-parking-frontend/src/app/services/parking.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,35 +7,18 @@ import { Router } from '@angular/router';
   templateUrl: './parking-selection.component.html',
   styleUrls: ['./parking-selection.component.css']
 })
-export class ParkingSelectionComponent {
-  lots = ['Lot A', 'Lot B', 'Lot C', 'Lot D'];
-  selectedLot: string | null = null;
-  availableSpots: { spot: number, status: number }[] = [];
-  selectedFile: File | null = null;
+export class ParkingSelectionComponent implements OnInit {
+  parkingLots = [
+    { id: 1, name: "Lot A", availableSpots: 12, image: "assets/lot-a.jpg" },
+    { id: 2, name: "Lot B", availableSpots: 5, image: "assets/lot-b.jpg" },
+    { id: 3, name: "Lot C", availableSpots: 8, image: "assets/lot-c.jpg" },
+    { id: 4, name: "Lot D", availableSpots: 3, image: "assets/lot-d.jpg" },
+    { id: 5, name: "Lot E", availableSpots: 10, image: "assets/lot-e.jpg" }
+  ];
 
-  constructor(private parkingService: ParkingService, private http: HttpClient, private router: Router) {
-    if (!localStorage.getItem('user')) {
-      this.router.navigate(['/login']);
-    }
-  }
+  constructor(private router: Router) {}
 
-  selectLot(lot: string) {
-    this.selectedLot = lot;
-  }
-
-  onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
-  }
-
-  validateParking() {
-    if (this.selectedFile && this.selectedLot) {
-      this.parkingService.validateVehicle(this.selectedLot, this.selectedFile).subscribe(response => {
-        alert(response.message);
-      }, error => {
-        alert("Unauthorized vehicle: " + error.error.plate);
-      });
-    } else {
-      alert("Please select a lot and upload a car image.");
-    }
+  selectLot(lotId: number) {
+    this.router.navigate(['/license-check', lotId]);
   }
 }

@@ -1,15 +1,17 @@
-<div class="container">
-  <h2>Select a Parking Lot</h2>
-  <select (change)="selectLot($event.target.value)">
-    <option value="">-- Choose a Lot --</option>
-    <option *ngFor="let lot of lots" [value]="lot">{{ lot }}</option>
-  </select>
+<div class="min-h-screen bg-gray-200 p-6">
+  <h1 class="text-3xl font-bold text-center text-blue-900 mb-6">Select a Parking Lot</h1>
 
-  <div *ngIf="selectedLot">
-    <h3>License Plate Verification</h3>
-    <input type="file" (change)="onFileSelected($event)">
-    <button (click)="validateParking()">Check Clearance</button>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div *ngFor="let lot of parkingLots" class="p-4 bg-white shadow-md rounded-lg hover:shadow-xl transition">
+      <img [src]="lot.image" alt="{{ lot.name }}" class="w-full h-32 object-cover rounded-lg mb-4">
+      
+      <h2 class="text-lg font-semibold text-blue-800">{{ lot.name }}</h2>
+      <p class="text-gray-700">Available Spots: {{ lot.availableSpots }}</p>
+      
+      <button (click)="selectLot(lot.id)"
+        class="mt-4 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-800 transition">
+        Select Lot
+      </button>
+    </div>
   </div>
-
-  <button class="logout" (click)="logout()">Logout</button>
 </div>

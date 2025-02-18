@@ -1,5 +1,11 @@
-/* Global styles for Angular */
 body {
-  margin: 0;
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
+}
+
+h1, h2 {
+  color: #0033A0;
+}
+
+button {
+  transition: all 0.3s ease-in-out;
 }

@@ -1,25 +1,36 @@
 import psycopg2
-from config import DB_CONFIG
+import os
 
-# Establish a connection to PostgreSQL
 def get_db_connection():
-    try:
-        conn = psycopg2.connect(**DB_CONFIG)
-        return conn
-    except Exception as e:
-        print("Error connecting to database:", e)
-        return None
-
-# Check if a vehicle is allowed to park in a specific lot
-def check_vehicle_clearance(plate_number, lot):
-    conn = get_db_connection()
-    cur = conn.cursor()
-    cur.execute(
-        "SELECT COUNT(*) FROM vehicles WHERE plate_number = %s AND assigned_lot = %s",
-        (plate_number, lot)
+    return psycopg2.connect(
+        dbname="smart_parking",
+        user=os.getenv("DB_USER", "postgres"),
+        password=os.getenv("DB_PASS", "password"),
+        host="localhost",
+        port="5432"
     )
-    result = cur.fetchone()[0]
-    cur.close()
-    conn.close()
 
-    return result > 0  # Returns True if vehicle is authorized
+def setup_database():
+    conn = get_db_connection()
+    cursor = conn.cursor()
+    
+    # Users Table
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id SERIAL PRIMARY KEY,
+            username TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL
+        )
+    """)
+
+    # Vehicle Permits Table
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS vehicle_permits (
+            id SERIAL PRIMARY KEY,
+            license_plate TEXT UNIQUE NOT NULL,
+            permit_status TEXT NOT NULL
+        )
+    """)
+
+    conn.commit()
+    conn.close()
