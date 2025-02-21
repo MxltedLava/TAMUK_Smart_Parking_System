@@ -1,20 +1,22 @@
-
-from flask import Flask, request, jsonify
-import psycopg2
-from database import get_db_connection, check_vehicle_clearance
+from flask import Flask, jsonify
 from camera_processor import process_camera_feed
+from database import check_vehicle_clearance
 
 app = Flask(__name__)
 
-# Validate license plate before allowing parking
-@app.route('/validate_parking', methods=['POST'])
-def validate_parking():
-    data = request.files.get("image")
-    lot = request.form.get("lot")
+@app.route('/scan-license', methods=['GET'])
+def scan_license():
+    license_plate = process_camera_feed()
+    
+    if license_plate:
+        lot_clearance = check_vehicle_clearance(license_plate)
+        
+        if lot_clearance:
+            return jsonify({"status": "Approved", "lot": lot_clearance})
+        else:
+            return jsonify({"status": "Denied", "message": "No parking clearance"})
 
-    result = process_camera_feed(data, lot)
+    return jsonify({"status": "Error", "message": "License plate not detected"})
 
-    if result["clearance"]:
-        return jsonify({"message": "Vehicle approved for parking", "plate": result["plate_number"]}), 200
-    else:
-        return jsonify({"error": "Unauthorized vehicle", "plate": result["plate_number"]}), 403
+if __name__ == '__main__':
+    app.run(debug=True)

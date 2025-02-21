@@ -1,36 +1,19 @@
 import psycopg2
-import os
 
 def get_db_connection():
     return psycopg2.connect(
         dbname="smart_parking",
-        user=os.getenv("DB_USER", "postgres"),
-        password=os.getenv("DB_PASS", "password"),
-        host="localhost",
-        port="5432"
+        user="postgres",
+        password="yourpassword",
+        host="localhost"
     )
 
-def setup_database():
+def check_vehicle_clearance(license_plate):
     conn = get_db_connection()
     cursor = conn.cursor()
     
-    # Users Table
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS users (
-            id SERIAL PRIMARY KEY,
-            username TEXT UNIQUE NOT NULL,
-            password TEXT NOT NULL
-        )
-    """)
-
-    # Vehicle Permits Table
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS vehicle_permits (
-            id SERIAL PRIMARY KEY,
-            license_plate TEXT UNIQUE NOT NULL,
-            permit_status TEXT NOT NULL
-        )
-    """)
-
-    conn.commit()
+    cursor.execute("SELECT lot FROM vehicle_permits WHERE license_plate = %s", (license_plate,))
+    result = cursor.fetchone()
+    
     conn.close()
+    return result if result else None
