@@ -1,21 +1,31 @@
-<div class="flex items-center justify-center h-screen bg-gray-100">
-  <div class="bg-white shadow-lg rounded-xl p-8 w-96">
-    <img src="assets/tamuk-logo.png" alt="TAMUK Logo" class="w-32 mx-auto mb-4">
-    <h2 class="text-xl font-semibold text-center text-blue-800 mb-4">Smart Parking System Login</h2>
+<div class="flex items-center justify-center h-screen bg-gradient-to-br from-yellow-200 to-yellow-400">
+  <div class="bg-white shadow-2xl rounded-2xl p-8 w-96 transform transition-all hover:scale-105 hover:shadow-3xl">
+    <img src="assets/tamuk-logo.png" alt="TAMUK Logo" class="w-24 mx-auto mb-4 drop-shadow-lg">
+    <h2 class="text-3xl font-extrabold text-center text-blue-900 mb-6">Smart Parking System</h2>
     
-    <form (submit)="login()">
-      <input type="text" [(ngModel)]="username" placeholder="Username" 
-        class="w-full p-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+    <form (submit)="login()" class="space-y-5">
+      <div class="relative">
+        <input type="text" [(ngModel)]="username" placeholder="Username" 
+          class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition-all duration-300" required />
+        <span class="absolute right-3 top-3 text-gray-400 text-lg">&#128100;</span>
+      </div>
       
-      <input type="password" [(ngModel)]="password" placeholder="Password" 
-        class="w-full p-2 border rounded-md mt-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
+      <div class="relative">
+        <input type="password" [(ngModel)]="password" placeholder="Password" 
+          class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition-all duration-300" required />
+        <span class="absolute right-3 top-3 text-gray-400 text-lg">&#128274;</span>
+      </div>
 
       <button type="submit" 
-        class="w-full bg-blue-600 text-white py-2 rounded-md mt-4 hover:bg-blue-800 transition-all">
+        class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-blue-900 transition-all shadow-lg hover:shadow-xl">
         Login
       </button>
     </form>
 
-    <p *ngIf="errorMessage" class="text-red-600 text-center mt-2">{{ errorMessage }}</p>
+    <p *ngIf="errorMessage" class="text-red-600 text-center mt-4 font-medium animate-pulse">{{ errorMessage }}</p>
+    
+    <p class="text-center mt-6 text-gray-800 text-sm">Don't have an account? 
+      <a href="#" class="text-blue-700 font-semibold hover:underline hover:text-blue-900 transition-all" (click)="register()">Register here</a>
+    </p>
   </div>
 </div>
