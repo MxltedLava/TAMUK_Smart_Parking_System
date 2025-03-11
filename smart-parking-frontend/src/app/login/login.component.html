@@ -3,7 +3,8 @@
     <img src="assets/tamuk-logo.png" alt="TAMUK Logo" class="w-24 mx-auto mb-4 drop-shadow-lg">
     <h2 class="text-3xl font-extrabold text-center text-blue-900 mb-6">Smart Parking System</h2>
     
-    <form (submit)="login()" class="space-y-5">
+    <!-- ✅ Fix: Change (submit)="login()" to (submit)="onLogin($event)" -->
+    <form (submit)="onLogin($event)" class="space-y-5">
       <div class="relative">
         <input type="text" [(ngModel)]="username" placeholder="Username" 
           class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition-all duration-300" required />

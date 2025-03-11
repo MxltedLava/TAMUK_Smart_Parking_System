@@ -1,16 +1,3 @@
-input[type="file"] {
-    margin: 10px 0;
-  }
-  
-  button {
-    background-color: #00205B;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-  }
-  
-  button:hover {
-    background-color: #B9975B;
+body {
+    background-color: #F8F9FA;
   }

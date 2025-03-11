@@ -1,29 +1,28 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'smart-parking-frontend/src/app/services/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.css']
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username = '';
-  password = '';
-  errorMessage = '';
+  username: string = '';
+  password: string = '';
+  errorMessage: string = '';  // ✅ Ensure this is here
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private router: Router) {}
 
-  login() {
-    this.authService.login(this.username, this.password).subscribe(
-      (response) => {
-        console.log("Login successful:", response);
-        this.router.navigate(['/parking-selection']);
-      },
-      (error) => {
-        console.error("Login failed:", error);
-        this.errorMessage = "Invalid username or password.";
-      }
-    );
+  onLogin(event: Event) {   // ✅ Fix: Ensure this function exists
+    event.preventDefault();  // ✅ Prevents page refresh
+    if (this.username === 'admin' && this.password === 'password') {  // Replace with real API call later
+      this.router.navigate(['/parking-selection']);
+    } else {
+      this.errorMessage = 'Invalid username or password';
+    }
+  }
+
+  register() {  // ✅ Dummy register function
+    alert('Registration not yet implemented!');
   }
 }
