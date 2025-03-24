@@ -9,20 +9,15 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   username: string = '';
   password: string = '';
-  errorMessage: string = '';  // ✅ Ensure this is here
 
   constructor(private router: Router) {}
 
-  onLogin(event: Event) {   // ✅ Fix: Ensure this function exists
-    event.preventDefault();  // ✅ Prevents page refresh
-    if (this.username === 'admin' && this.password === 'password') {  // Replace with real API call later
-      this.router.navigate(['/parking-selection']);
+  onLogin() {
+    if (this.username === 'your-username' && this.password === 'your-password') {
+      // Redirect to Parking Map on successful login
+      this.router.navigate(['/parking-map']);
     } else {
-      this.errorMessage = 'Invalid username or password';
+      alert('Invalid username or password!');
     }
-  }
-
-  register() {  // ✅ Dummy register function
-    alert('Registration not yet implemented!');
   }
 }
