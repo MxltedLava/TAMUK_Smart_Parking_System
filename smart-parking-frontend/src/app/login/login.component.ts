@@ -9,15 +9,21 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   username: string = '';
   password: string = '';
+  errorMessage: string = '';
 
   constructor(private router: Router) {}
 
-  onLogin() {
-    if (this.username === 'your-username' && this.password === 'your-password') {
-      // Redirect to Parking Map on successful login
-      this.router.navigate(['/parking-map']);
+  onLogin(event: Event): void {
+    event.preventDefault();
+
+    if (this.username === 'admin' && this.password === 'orange') {
+      this.router.navigate(['/parking-selection']);
     } else {
-      alert('Invalid username or password!');
+      this.errorMessage = 'Incorrect Password or Username, please try again!';
     }
+  }
+
+  register(): void {
+    this.router.navigate(['/register']); // Go to a real registration page
   }
 }

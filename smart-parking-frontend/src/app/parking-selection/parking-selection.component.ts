@@ -7,11 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./parking-selection.component.css']
 })
 export class ParkingSelectionComponent {
-  parkingLots = [1, 2, 3, 4, 5, 6];
+  parkingLots = ['A', 'B', 'C', 'D', 'E', 'F'];
 
   constructor(private router: Router) { }
 
-  selectLot(lot: number) {
+  selectLot(lot: string) {
     this.router.navigate(['/parking-map', lot]);
   }
 }

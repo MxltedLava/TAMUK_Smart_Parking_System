@@ -3,10 +3,11 @@ import pytesseract
 
 # Load the YOLO model
 import torch
-model = torch.hub.load('ultralytics/yolov5', 'custom', path='yolo/yolov5s.pt')
+
+model = torch.hub.load("ultralytics/yolov5", "custom", path="yolo/yolov5s.pt")
 
 # Load image
-image_path = 'test_plate.jpg'  # Replace this with your captured image path
+image_path = "test_plate.jpg"  # Replace this with your captured image path
 img = cv2.imread(image_path)
 
 # Resize to match the example image (specific size based on your upload)
@@ -21,7 +22,7 @@ gray = cv2.cvtColor(resized_img, cv2.COLOR_BGR2GRAY)
 enhanced = cv2.equalizeHist(gray)
 
 # Detect license plate text using pytesseract
-text = pytesseract.image_to_string(enhanced, config='--psm 8')
+text = pytesseract.image_to_string(enhanced, config="--psm 8")
 
 # Print detected text
 if text.strip():

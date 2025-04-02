@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class ParkingMapComponent {\n  constructor(route) {\n    this.route = route;\n    this.selectedLot = '';\n  }\n  ngOnInit() {\n    this.selectedLot = this.route.snapshot.paramMap.get('lot') || '';\n    console.log('Selected Parking Lot:', this.selectedLot);\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

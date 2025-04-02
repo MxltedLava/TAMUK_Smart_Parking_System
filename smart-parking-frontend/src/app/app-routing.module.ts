@@ -7,8 +7,8 @@ import { ParkingSelectionComponent } from './parking-selection/parking-selection
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'parking-map', component: ParkingMapComponent },
-  { path: 'parking-selection', component: ParkingSelectionComponent }
+  { path: 'parking-selection', component: ParkingSelectionComponent },
+  { path: 'parking-map/:lot', component: ParkingMapComponent }  // <-- updated
 ];
 
 @NgModule({

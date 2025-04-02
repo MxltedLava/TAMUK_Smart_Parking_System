@@ -2,27 +2,31 @@ from flask import Blueprint, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from database import get_db_connection
 
-auth_bp = Blueprint('auth', __name__)
+auth_bp = Blueprint("auth", __name__)
 
-@auth_bp.route('/register', methods=['POST'])
+
+@auth_bp.route("/register", methods=["POST"])
 def register():
     data = request.get_json()
-    username = data['username']
-    password = generate_password_hash(data['password'])
+    username = data["username"]
+    password = generate_password_hash(data["password"])
 
     conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("INSERT INTO users (username, password) VALUES (%s, %s)", (username, password))
+    cursor.execute(
+        "INSERT INTO users (username, password) VALUES (%s, %s)", (username, password)
+    )
     conn.commit()
     conn.close()
 
     return jsonify({"message": "User registered successfully"}), 201
 
-@auth_bp.route('/login', methods=['POST'])
+
+@auth_bp.route("/login", methods=["POST"])
 def login():
     data = request.get_json()
-    username = data['username']
-    password = data['password']
+    username = data["username"]
+    password = data["password"]
 
     conn = get_db_connection()
     cursor = conn.cursor()

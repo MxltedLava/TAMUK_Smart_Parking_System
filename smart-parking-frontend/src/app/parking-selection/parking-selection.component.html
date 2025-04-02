@@ -1,9 +1,12 @@
-<div class="min-h-screen bg-white text-navy p-6 flex flex-col items-center">
-  <h1 class="text-5xl text-gold mb-6 font-bold">Please select a parking lot:</h1>
+<div class="min-h-screen bg-white text-blue-900 p-10 flex flex-col items-center">
+  <h1 class="text-4xl font-bold mb-8 text-yellow-500">Please select a parking lot:</h1>
+
   <div class="grid grid-cols-2 gap-6">
-      <button>Parking Lot A</button>
-      <button>Parking Lot B</button>
-      <button>Parking Lot C</button>
-    </button>
+    <button class="bg-blue-700 text-white px-6 py-4 rounded-xl shadow hover:bg-blue-800 transition" (click)="selectLot('A')">Parking Lot A</button>
+    <button class="bg-blue-700 text-white px-6 py-4 rounded-xl shadow hover:bg-blue-800 transition" (click)="selectLot('B')">Parking Lot B</button>
+    <button class="bg-blue-700 text-white px-6 py-4 rounded-xl shadow hover:bg-blue-800 transition" (click)="selectLot('C')">Parking Lot C</button>
+    <button class="bg-blue-700 text-white px-6 py-4 rounded-xl shadow hover:bg-blue-800 transition" (click)="selectLot('D')">Parking Lot D</button>
+    <button class="bg-blue-700 text-white px-6 py-4 rounded-xl shadow hover:bg-blue-800 transition" (click)="selectLot('E')">Parking Lot E</button>
+    <button class="bg-blue-700 text-white px-6 py-4 rounded-xl shadow hover:bg-blue-800 transition" (click)="selectLot('F')">Parking Lot F</button>
   </div>
 </div>
