@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: smart-parking-backend
+    env: python
+    plan: free
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn backend.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: backend.settings
+      - key: SECRET_KEY
+        value: YOUR_SECRET_KEY
+      - key: ALLOWED_HOSTS
+        value: '*'
+      - key: PYTHON_VERSION
+        value: 3.11.11
