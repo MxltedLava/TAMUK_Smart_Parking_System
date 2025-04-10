@@ -1,0 +1,26 @@
+<div class="security-dashboard">
+    <h2>🚨 Unauthorized Parking Alerts</h2>
+  
+    <table *ngIf="alerts.length > 0">
+      <thead>
+        <tr>
+          <th>Plate</th>
+          <th>Lot</th>
+          <th>Time</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let alert of alerts">
+          <td>{{ alert.plate_read }}</td>
+          <td>{{ alert.lot }}</td>
+          <td>{{ alert.timestamp }}</td>
+          <td>
+            <img [src]="alert.image_path" width="100" *ngIf="alert.image_path.includes('media')">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="alerts.length === 0">✅ No unauthorized attempts detected.</p>
+  </div>

@@ -1,6 +1,6 @@
 Django>=4.2
 djangorestframework>=3.14
-Pillow
+pytesseract
 numpy
 opencv-python
 torch>=2.0.0

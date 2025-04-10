@@ -1,23 +1,32 @@
+// frontend/src/app/app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';  // ✅ Ensure this is imported
-import { LoginComponent } from './login/login.component';  // ✅ Ensure this path is correct
-import { ParkingMapComponent } from './parking-map/parking-map.component';
-import { ParkingSelectionComponent } from './parking-selection/parking-selection.component';
+import { AppRoutingModule } from './app-routing.module';
+
+import { RegisterVehicleComponent } from './register-vehicle/register-vehicle.component';
+import { OwnerLoginComponent } from './owner-login/owner-login.component';
+import { ParkingHistoryComponent } from './parking-history/parking-history.component';
+import { ClearanceCheckComponent } from './clearance-check/clearance-check.component';
+import { SecurityDashboardComponent } from './security-dashboard/security-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,          // ✅ Ensure this is here
-    ParkingMapComponent,
-    ParkingSelectionComponent
+    RegisterVehicleComponent,
+    OwnerLoginComponent,
+    ParkingHistoryComponent,
+    ClearanceCheckComponent,
+    SecurityDashboardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    FormsModule               // ✅ Ensure this is included
+    FormsModule,
+    HttpClientModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

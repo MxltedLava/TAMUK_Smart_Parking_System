@@ -1,8 +1,8 @@
 {
   "name": "smart-parking-frontend",
   "version": "1.0.0",
-  "scripts": {
-    "start": "ng serve",
+  "scripts":
+  "start": "ng serve --proxy-config src/proxy.conf.json"
     "build": "ng build"
   },
   "dependencies": {

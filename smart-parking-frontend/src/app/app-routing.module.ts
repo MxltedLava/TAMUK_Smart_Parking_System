@@ -1,18 +1,24 @@
+// frontend/src/app/app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';   // ✅ Ensure this path is correct
-import { ParkingMapComponent } from './parking-map/parking-map.component';
-import { ParkingSelectionComponent } from './parking-selection/parking-selection.component';
+
+import { RegisterVehicleComponent } from './register-vehicle/register-vehicle.component';
+import { OwnerLoginComponent } from './login/login.component'; // ✅ updated
+import { ParkingHistoryComponent } from './parking-history/parking-history.component';
+import { ClearanceCheckComponent } from './clearance-check/clearance-check.component';
+import { SecurityDashboardComponent } from './security-dashboard/security-dashboard.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'parking-selection', component: ParkingSelectionComponent },
-  { path: 'parking-map/:lot', component: ParkingMapComponent }  // <-- updated
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'register', component: RegisterVehicleComponent },
+  { path: 'login', component: OwnerLoginComponent },
+  { path: 'history', component: ParkingHistoryComponent },
+  { path: 'check', component: ClearanceCheckComponent },
+  { path: 'alerts', component: SecurityDashboardComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

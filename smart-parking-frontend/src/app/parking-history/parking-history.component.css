@@ -1,0 +1,21 @@
+.cleared {
+    color: green;
+    font-weight: bold;
+  }
+  .unauthorized {
+    color: red;
+    font-weight: bold;
+  }
+  img {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }

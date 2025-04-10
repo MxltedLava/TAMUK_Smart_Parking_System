@@ -1,0 +1,11 @@
+<div class="clearance-check-container">
+    <h2>Check Parking Clearance</h2>
+  
+    <input type="text" [(ngModel)]="imagePath" placeholder="Enter image path" />
+    <button (click)="checkPlate(imagePath)">Check Plate</button>
+  
+    <div *ngIf="plate">
+      <p><strong>Plate:</strong> {{ plate }}</p>
+      <p><strong>Status:</strong> {{ status }}</p>
+    </div>
+  </div>

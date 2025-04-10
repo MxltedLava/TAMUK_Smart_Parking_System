@@ -1,0 +1,26 @@
+<div class="parking-history">
+    <h2>📋 My Parking History</h2>
+  
+    <table *ngIf="results.length > 0">
+      <thead>
+        <tr>
+          <th>Detected Plate</th>
+          <th>Status</th>
+          <th>Timestamp</th>
+          <th>Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let entry of results">
+          <td>{{ entry.plate_read }}</td>
+          <td [ngClass]="entry.status">{{ entry.status }}</td>
+          <td>{{ entry.timestamp }}</td>
+          <td>
+            <img *ngIf="entry.image_path.includes('media')" [src]="entry.image_path" width="120">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <p *ngIf="results.length === 0">No parking history available for plate {{ plate }}.</p>
+  </div>

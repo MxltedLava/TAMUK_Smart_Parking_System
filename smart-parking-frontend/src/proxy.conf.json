@@ -1,0 +1,6 @@
+{
+    "/api": {
+      "target": "http://<your-pi-ip>:8000",
+      "secure": false
+    }
+  }
