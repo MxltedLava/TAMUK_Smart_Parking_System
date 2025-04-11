@@ -1,20 +1,19 @@
-// frontend/src/app/app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { RegisterVehicleComponent } from './register-vehicle/register-vehicle.component';
-import { OwnerLoginComponent } from './login/login.component'; // ✅ updated
-import { ParkingHistoryComponent } from './parking-history/parking-history.component';
+import { LoginComponent } from './login/login.component';
 import { ClearanceCheckComponent } from './clearance-check/clearance-check.component';
+import { RegisterVehicleComponent } from './register-vehicle/register-vehicle.component';
+import { ParkingHistoryComponent } from './parking-history/parking-history.component';
 import { SecurityDashboardComponent } from './security-dashboard/security-dashboard.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterVehicleComponent },
-  { path: 'login', component: OwnerLoginComponent },
-  { path: 'history', component: ParkingHistoryComponent },
-  { path: 'check', component: ClearanceCheckComponent },
-  { path: 'alerts', component: SecurityDashboardComponent },
+  { path: 'parking-history', component: ParkingHistoryComponent },
+  { path: 'clearance-check', component: ClearanceCheckComponent },
+  { path: 'dashboard', component: SecurityDashboardComponent }
 ];
 
 @NgModule({

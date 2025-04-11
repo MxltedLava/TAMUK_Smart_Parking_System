@@ -6,7 +6,7 @@ from .models import VehiclePermit, ParkingAttempt
 from .plate_recognition import extract_plate_text
 from .notifications import send_email_alert, send_sms_alert
 import json
-
+from django.http import JsonResponse
 # Fuzzy matching (at least 5 characters must match)
 def fuzzy_match(plate_a: str, plate_b: str, threshold=5) -> bool:
     match_count = sum(1 for a, b in zip(plate_a.upper(), plate_b.upper()) if a == b)

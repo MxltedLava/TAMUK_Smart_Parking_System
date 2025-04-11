@@ -1,14 +1,19 @@
 import os
 from pathlib import Path
 
+# Base directory of the project
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'your-secret-key'
+# ✅ Easy Secret Key (Only use for development!)
+SECRET_KEY = 'dev-secret-key'
 
+# ✅ Debug mode ON for development
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '192.168.1.100']
+# ✅ Allow local connections
+ALLOWED_HOSTS = []
 
+# ✅ Installed Apps
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -16,9 +21,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Add your app(s) here
+    
+    'api',  # 👈 Your custom app for Smart Parking
 ]
 
+# ✅ Middleware (default is fine for dev)
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -29,12 +36,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# ✅ Root URL configuration
 ROOT_URLCONF = 'backend.urls'
 
+# ✅ Template settings (default)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],  # Optional for HTML templates
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -47,8 +56,10 @@ TEMPLATES = [
     },
 ]
 
+# ✅ WSGI application
 WSGI_APPLICATION = 'backend.wsgi.application'
 
+# ✅ Database (SQLite for dev)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -56,12 +67,23 @@ DATABASES = {
     }
 }
 
+# ✅ Password validation (default)
+AUTH_PASSWORD_VALIDATORS = [
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
+]
+
+# ✅ Internationalization
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 USE_I18N = True
 USE_TZ = True
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# ✅ Static files (CSS, JS, images)
+STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
+# ✅ Primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
