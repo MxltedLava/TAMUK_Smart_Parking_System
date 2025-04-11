@@ -1,11 +1,22 @@
+# Core Django + REST framework
 Django>=4.2
-djangorestframework>=3.14
-pytesseract
-numpy
+djangorestframework
+django-cors-headers
+
+# Image processing
 opencv-python
-torch>=2.0.0
+pillow
+
+# Database (PostgreSQL or SQLite)
+psycopg2-binary  # Comment this out if you're using SQLite
+
+# For YOLO or OpenCV-based detection
+numpy
+torch
 torchvision
-PyYAML
-gunicorn  # for Render deployment
-whitenoise  # for serving static files on Render
-psycopg2-binary  # if you're using PostgreSQL on Render
+
+# Optional: For running Django with Gunicorn locally (systemd)
+gunicorn
+
+# Optional but useful
+requests
