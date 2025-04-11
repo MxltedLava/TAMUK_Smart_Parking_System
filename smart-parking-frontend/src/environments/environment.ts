@@ -1,4 +1,4 @@
 export const environment = {
-    production: false,
-    apiUrl: 'http://localhost:8000'  // ✅ Local backend endpoint
-  };
+  production: false,
+  apiUrl: 'http://192.168.1.100/api/'
+};
