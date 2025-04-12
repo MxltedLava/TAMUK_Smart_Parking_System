@@ -36,10 +36,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# ✅ Root URL configuration
+
 ROOT_URLCONF = 'backend.urls'
 
-# ✅ Template settings (default)
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -56,10 +56,10 @@ TEMPLATES = [
     },
 ]
 
-# ✅ WSGI application
+
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-# ✅ Database (SQLite for dev)
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -81,9 +81,15 @@ TIME_ZONE = 'America/Chicago'
 USE_I18N = True
 USE_TZ = True
 
-# ✅ Static files (CSS, JS, images)
+
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
-# ✅ Primary key field type
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/home/pi/processed'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#twilio setting
+TWILIO_ACCOUNT_SID = USb8ed9436eae323f316b55a25743f8f56
+TWILIO_AUTH_TOKEN = 653
+TWILIO_PHONE_NUMBER = 361-737-2065

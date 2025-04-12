@@ -4,13 +4,14 @@ from django.views.decorators.http import require_POST
 from datetime import datetime
 from .models import VehiclePermit, ParkingAttempt
 from .plate_recognition import extract_plate_text
-from .notifications import send_email_alert, send_sms_alert
+from .notifications import send_sms_alert
 import json
-from django.http import JsonResponse
+
 # Fuzzy matching (at least 5 characters must match)
 def fuzzy_match(plate_a: str, plate_b: str, threshold=5) -> bool:
     match_count = sum(1 for a, b in zip(plate_a.upper(), plate_b.upper()) if a == b)
     return match_count >= threshold
+
 
 # ✅ API: Register a vehicle
 @csrf_exempt
@@ -24,7 +25,7 @@ def register_vehicle(request):
     if not plate or not owner_name or not pin:
         return JsonResponse({"success": False, "error": "Missing required fields"}, status=400)
 
-    if VehiclePermit.objects.filter(plate_number=plate).exists():
+    if VehiclePermit.objects.filter(plate_number=plate.upper()).exists():
         return JsonResponse({"success": False, "error": "Vehicle already registered"}, status=400)
 
     VehiclePermit.objects.create(
@@ -46,13 +47,13 @@ def owner_login(request):
     pin = data.get("pin")
 
     try:
-        vehicle = VehiclePermit.objects.get(plate_number=plate, pin=pin)
-        return JsonResponse({"success": True, "plate": plate, "owner": vehicle.owner_name})
+        vehicle = VehiclePermit.objects.get(plate_number=plate.upper(), pin=pin)
+        return JsonResponse({"success": True, "plate": plate.upper(), "owner": vehicle.owner_name})
     except VehiclePermit.DoesNotExist:
         return JsonResponse({"success": False, "error": "Invalid credentials"}, status=401)
 
 
-# ✅ API: Check plate clearance (called after plate image is processed)
+# ✅ API: Check plate clearance
 def check_clearance(request):
     image_path = request.GET.get("image")
     lot_name = request.GET.get("lot", "Main Lot")
@@ -74,7 +75,7 @@ def check_clearance(request):
             matched_vehicle = vehicle
             break
 
-    # Step 3: Log & respond
+    # Step 3: Log attempt
     if matched_vehicle:
         ParkingAttempt.objects.create(
             plate_read=plate_text,
@@ -88,8 +89,9 @@ def check_clearance(request):
             "status": "cleared",
             "owner": matched_vehicle.owner_name
         })
-
     else:
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
         ParkingAttempt.objects.create(
             plate_read=plate_text,
             matched_plate=None,
@@ -98,9 +100,8 @@ def check_clearance(request):
             lot=lot_name
         )
 
-        # 🔔 Trigger alerts
-        send_email_alert(plate_text, image_path)
-        send_sms_alert(plate_text)
+        # 🚨 Send SMS alert (plate, lot, time)
+        send_sms_alert(plate_text, lot_name, timestamp)
 
         return JsonResponse({
             "plate": plate_text,
@@ -108,7 +109,7 @@ def check_clearance(request):
         })
 
 
-# ✅ API: Get parking history for an owner
+# ✅ API: Get parking history for a specific plate
 def get_parking_history(request):
     plate = request.GET.get("plate")
     if not plate:

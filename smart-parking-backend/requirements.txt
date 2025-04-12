@@ -1,22 +1,17 @@
-# Core Django + REST framework
+
 Django>=4.2
 djangorestframework
 django-cors-headers
 
-# Image processing
 opencv-python
 pillow
-
-# Database (PostgreSQL or SQLite)
-psycopg2-binary  # Comment this out if you're using SQLite
-
-# For YOLO or OpenCV-based detection
+psycopg2-binary  
+twilio
 numpy
 torch
 torchvision
 
-# Optional: For running Django with Gunicorn locally (systemd)
+
 gunicorn
 
-# Optional but useful
-requests
+request
