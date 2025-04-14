@@ -1,0 +1,30 @@
+.vehicle-registration {
+    padding: 20px;
+  }
+  
+  .vehicle-registration table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .vehicle-registration th,
+  .vehicle-registration td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .vehicle-registration th {
+    background-color: #f4f4f4;
+  }
+  
+  .Active {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .Expired {
+    color: red;
+    font-weight: bold;
+  }
+  

@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { RegisterComponent } from '../../src/app/accountregistration/accountregistration.component';  // Adjust import path
+
 import { LoginComponent } from './login/login.component';
 import { RegisterVehicleComponent } from './register-vehicle/register-vehicle.component';
 import { ParkingHistoryComponent } from './parking-history/parking-history.component';
@@ -14,6 +16,7 @@ import { SecurityDashboardComponent } from './security-dashboard/security-dashbo
 
 @NgModule({
   declarations: [
+    RegisterComponent,
     AppComponent,
     LoginComponent,
     RegisterVehicleComponent,
