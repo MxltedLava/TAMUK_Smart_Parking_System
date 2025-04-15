@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-account-registration',
@@ -7,38 +7,45 @@ import { Router } from '@angular/router';
   styleUrls: ['./accountregistration.component.css']
 })
 export class AccountRegistrationComponent {
-  username: string = '';
-  email: string = '';
-  password: string = '';
-  confirmPassword: string = '';
-  errorMessage: string = '';
+  username = '';
+  email = '';
+  password = '';
+  confirmPassword = '';
 
-  constructor(private router: Router) {}
+  constructor(private http: HttpClient) {}
 
-  onRegister(event: Event): void {
+  // Handle the registration logic when the form is submitted
+  onRegister(event: Event) {
     event.preventDefault();
 
-    // Password match check
+    // Check if password and confirmPassword match
     if (this.password !== this.confirmPassword) {
-      this.errorMessage = "Passwords do not match.";
+      alert("Passwords don't match! Please try again.");
       return;
     }
 
-    // Email pattern check (extra validation if needed)
-    const tamukEmailRegex = /^[a-zA-Z0-9._%+-]+@students\.tamuk\.edu$/;
-    if (!tamukEmailRegex.test(this.email)) {
-      this.errorMessage = "Please enter a valid TAMUK student email.";
-      return;
-    }
+    // Prepare the data to send to the backend
+    const user = {
+      username: this.username,
+      email: this.email,
+      password: this.password
+    };
 
-    // Simulate registration success (replace with real backend call)
-    // If all validations pass:
-    this.errorMessage = '';
-    console.log('Registration successful!');
-    this.router.navigate(['/login']); // ✅ Navigate to login page
+    // Send POST request to the backend to register the user
+    this.http.post('http://127.0.0.1:3000/register', user).subscribe(
+      (response) => {
+        alert('User Registered Successfully!');
+        console.log(response);
+      },
+      (error) => {
+        alert('Registration failed! Please try again.');
+        console.error(error);
+      }
+    );
   }
 
-  login(): void {
-    this.router.navigate(['/login']);
+  // Redirect to login page if the user already has an account
+  login() {
+    window.location.href = 'http://127.0.0.1:5502/smart-parking-frontend/src/app/login/login.component.html';
   }
 }
