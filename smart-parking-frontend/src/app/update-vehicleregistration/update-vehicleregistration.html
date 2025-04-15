@@ -1,0 +1,26 @@
+<div class="flex items-center justify-center h-screen bg-gradient-to-br from-yellow-200 to-yellow-400">
+  <div class="bg-white shadow-2xl rounded-2xl p-8 w-96 transform transition-all hover:scale-105 hover:shadow-3xl">
+    <img src="../../assets/logo.jpg" alt="TAMUK Logo" class="w-24 mx-auto mb-4 drop-shadow-lg">
+    <h2 class="text-3xl font-extrabold text-center text-blue-900 mb-6">Update License Plate</h2>
+
+    <form (submit)="onUpdate($event)" class="space-y-5">
+      <div class="relative">
+        <input type="text" [(ngModel)]="licensePlate" placeholder="Enter New License Plate" 
+          class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition-all duration-300" required />
+        <span class="absolute right-3 top-3 text-gray-400 text-lg">🚗</span>
+      </div>
+
+      <button type="submit"
+        class="w-full bg-gradient-to-r from-green-500 to-green-700 text-white py-3 rounded-lg text-lg font-semibold hover:from-green-700 hover:to-green-900 transition-all shadow-lg hover:shadow-xl">
+        Change
+      </button>
+    </form>
+
+    <button 
+      onclick="window.location.href='http://127.0.0.1:5502/smart-parking-frontend/src/app/student-profile/student-profile.html'"
+      class="mt-4 text-blue-700 font-semibold hover:underline hover:text-blue-900 transition-all">
+      Back to Profile
+    </button>
+  </div>
+</div>
+
