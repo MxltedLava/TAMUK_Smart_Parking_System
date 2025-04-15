@@ -86,7 +86,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/pi/processed'
+MEDIA_ROOT = '/hom/pi /processed'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #twilio setting
