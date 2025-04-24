@@ -1,28 +1,29 @@
-export class EmployeeVehicleRegistrationComponent {
-  vehicles = [
-    {
-      owner: 'Sarah Johnson',
-      make: 'Toyota',
-      model: 'Camry',
-      plate: 'TX-4589',
-      expiry: '2025-02-14',
-      status: 'Active'
-    },
-    {
-      owner: 'Mark Rivera',
-      make: 'Ford',
-      model: 'Fusion',
-      plate: 'TX-9291',
-      expiry: '2024-06-01',
-      status: 'Expiring Soon'
-    },
-    {
-      owner: 'Emily Chen',
-      make: 'Honda',
-      model: 'Civic',
-      plate: 'TX-3742',
-      expiry: '2023-12-30',
-      status: 'Expired'
-    }
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-register-vehicle',
+  templateUrl: './register-vehicle.component.html',
+  styleUrls: ['./register-vehicle.component.css']
+})
+export class RegisterVehicleComponent implements OnInit {
+
+  vehicles: any[] = [
+    // Mock data: Replace with real data from an API or service
+    { owner: 'John Doe', make: 'Toyota', model: 'Camry', plate: 'XYZ123', expiry: new Date('2025-06-15'), status: 'Active' },
+    { owner: 'Jane Smith', make: 'Honda', model: 'Civic', plate: 'ABC456', expiry: new Date('2024-11-10'), status: 'Expired' }
   ];
+
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+    // This is where you would load your vehicle data, potentially from a service.
+    // For now, it uses mock data.
+  }
+
+  goBack(): void {
+    this.router.navigate(['/employee-menu']); // Navigate back to employee menu (or modify as needed)
+  }
 }
+``
+

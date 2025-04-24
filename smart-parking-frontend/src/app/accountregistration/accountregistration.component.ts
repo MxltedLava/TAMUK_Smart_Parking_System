@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-registration',
@@ -7,45 +7,28 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./accountregistration.component.css']
 })
 export class AccountRegistrationComponent {
-  username = '';
-  email = '';
-  password = '';
-  confirmPassword = '';
+  username: string = '';
+  email: string = '';
+  password: string = '';
+  confirmPassword: string = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private router: Router) {}
 
-  // Handle the registration logic when the form is submitted
-  onRegister(event: Event) {
-    event.preventDefault();
-
-    // Check if password and confirmPassword match
+  onRegister(): void {
+    // Add logic for form validation and registration
     if (this.password !== this.confirmPassword) {
-      alert("Passwords don't match! Please try again.");
+      alert('Passwords do not match!');
       return;
     }
 
-    // Prepare the data to send to the backend
-    const user = {
-      username: this.username,
-      email: this.email,
-      password: this.password
-    };
+    // Simulate successful registration or send data to your backend
+    console.log('Registered:', { username: this.username, email: this.email });
 
-    // Send POST request to the backend to register the user
-    this.http.post('http://127.0.0.1:3000/register', user).subscribe(
-      (response) => {
-        alert('User Registered Successfully!');
-        console.log(response);
-      },
-      (error) => {
-        alert('Registration failed! Please try again.');
-        console.error(error);
-      }
-    );
+    // Navigate to login after successful registration
+    this.router.navigate(['/login']);
   }
 
-  // Redirect to login page if the user already has an account
-  login() {
-    window.location.href = 'http://127.0.0.1:5502/smart-parking-frontend/src/app/login/login.component.html';
+  goToLogin(): void {
+    this.router.navigate(['/login']);
   }
 }

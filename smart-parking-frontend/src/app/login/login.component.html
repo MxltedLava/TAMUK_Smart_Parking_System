@@ -2,43 +2,45 @@
   <div class="bg-white shadow-2xl rounded-2xl p-8 w-96 transform transition-all hover:scale-105 hover:shadow-3xl">
     <img src="../../assets/logo.jpg" alt="TAMUK Logo" class="w-24 mx-auto mb-4 drop-shadow-lg">
     <h2 class="text-3xl font-extrabold text-center text-blue-900 mb-6">Smart Parking System</h2>
-    
+
     <form (submit)="onLogin($event)" class="space-y-5">
       <div class="relative">
-        <input type="text" [(ngModel)]="username" placeholder="Username" 
+        <input type="text" [(ngModel)]="username" name="username" placeholder="Username" 
           class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition-all duration-300" required />
         <span class="absolute right-3 top-3 text-gray-400 text-lg">&#128100;</span>
       </div>
-      
+
       <div class="relative">
-        <input type="password" [(ngModel)]="password" placeholder="Password" 
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Password" 
           class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition-all duration-300" required />
         <span class="absolute right-3 top-3 text-gray-400 text-lg">&#128274;</span>
       </div>
 
-      <button type="submit" 
+      <button type="submit"
         class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-3 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-blue-900 transition-all shadow-lg hover:shadow-xl">
         Login
       </button>
-      
-      <!-- Employee Login Button -->
-      <button type="button" 
-        onclick="window.location.href='http://192.168.0.101:1276/smart-parking-frontend/src/app/employeelogin/employeelogin.component.html'"
+
+      <button type="button"
+        (click)="goToEmployeePage()"
         class="text-blue-700 font-semibold hover:underline hover:text-blue-900 transition-all mt-4">
         Employee Login
       </button>
 
-      <!-- Bypass to Student Menu Button -->
-      <button type="button" 
-        onclick="window.location.href='http://192.168.0.101:1276/smart-parking-frontend/src/app/student-menu/student-menu.html'"
+      <button type="button"
+        (click)="goToStudentMenu()"
         class="w-full py-3 px-6 rounded-lg bg-green-600 text-white text-lg font-semibold hover:bg-green-800 transition-all shadow-md mt-4">
         Bypass to Student Menu
       </button>
     </form>
 
-    <p class="text-center mt-6 text-gray-800 text-sm">Don't have an account? 
-      <a href="#" onclick="window.location.href='http://192.168.0.101:1276/smart-parking-frontend/src/app/accountregistration/accountregistration.component.html'"
-      class="text-blue-700 font-semibold hover:underline hover:text-blue-900 transition-all" (click)="register()">Register here</a>
+    <p class="text-center mt-6 text-gray-800 text-sm">
+      Don't have an account? 
+      <a href="#" (click)="register()" class="text-blue-700 font-semibold hover:underline hover:text-blue-900 transition-all">
+        Register here
+      </a>
     </p>
+
+    <p *ngIf="errorMessage" class="text-red-600 mt-4">{{ errorMessage }}</p>
   </div>
 </div>

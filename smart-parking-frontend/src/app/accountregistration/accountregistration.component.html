@@ -3,17 +3,17 @@
     <img src="../../assets/logo.jpg" alt="TAMUK Logo" class="w-24 mx-auto mb-4 drop-shadow-lg">
     <h2 class="text-3xl font-extrabold text-center text-blue-900 mb-6">Create Your Account</h2>
 
-    <form (submit)="onRegister($event)" class="space-y-5">
+    <form (ngSubmit)="onRegister()" class="space-y-5">
       <!-- Username -->
       <div class="relative">
-        <input type="text" [(ngModel)]="username" placeholder="Username"
+        <input type="text" [(ngModel)]="username" name="username" placeholder="Username"
           class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition-all duration-300" required />
         <span class="absolute right-3 top-3 text-gray-400 text-lg">&#128100;</span>
       </div>
 
       <!-- School Email -->
       <div class="relative">
-        <input type="email" [(ngModel)]="email" placeholder="School Email (@students.tamuk.edu)" 
+        <input type="email" [(ngModel)]="email" name="email" placeholder="School Email (@students.tamuk.edu)" 
           pattern="^[a-zA-Z0-9._%+-]+@students\.tamuk\.edu$"
           class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition-all duration-300" required />
         <span class="absolute right-3 top-3 text-gray-400 text-lg">&#9993;</span>
@@ -21,14 +21,14 @@
 
       <!-- Password -->
       <div class="relative">
-        <input type="password" [(ngModel)]="password" placeholder="Create Password"
+        <input type="password" [(ngModel)]="password" name="password" placeholder="Create Password"
           class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition-all duration-300" required />
         <span class="absolute right-3 top-3 text-gray-400 text-lg">&#128274;</span>
       </div>
 
       <!-- Confirm Password -->
       <div class="relative">
-        <input type="password" [(ngModel)]="confirmPassword" placeholder="Confirm Password"
+        <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Confirm Password"
           class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md transition-all duration-300" required />
         <span class="absolute right-3 top-3 text-gray-400 text-lg">&#128274;</span>
       </div>
@@ -42,8 +42,10 @@
 
     <!-- Back to login -->
     <p class="text-center mt-6 text-gray-800 text-sm">Already have an account? 
-      <a href="#" onclick="window.location.href='http://192.168.0.101:1276/smart-parking-frontend/src/app/login/login.component.html'"
-      class="text-blue-700 font-semibold hover:underline hover:text-blue-900 transition-all" (click)="login()">Log in here</a>
+      <a href="#" (click)="goToLogin()"
+      class="text-blue-700 font-semibold hover:underline hover:text-blue-900 transition-all">
+        Log in here
+      </a>
     </p>
   </div>
 </div>

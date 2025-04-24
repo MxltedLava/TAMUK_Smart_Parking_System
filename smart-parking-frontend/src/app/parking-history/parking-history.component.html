@@ -1,36 +1,39 @@
 <div class="parking-history">
-    <h2>Parking History</h2>
+  <h2>Parking History</h2>
 
-    <div class="mt-6 text-center">
-      <button
-        type="button"
-        onclick="window.location.href='http://192.168.0.101:1276/smart-parking-frontend/src/app/employee-menu/employee-menu.html'"
-        class="bg-gradient-to-r from-gray-400 to-gray-600 text-white py-2 px-6 rounded-lg text-lg font-semibold hover:from-gray-500 hover:to-gray-700 transition-all shadow-md hover:shadow-lg"
-      >
-        Go Back
-      </button>
-    </div>
-  
-    <table *ngIf="results.length > 0">
-      <thead>
-        <tr>
-          <th>Detected Plate</th>
-          <th>Status</th>
-          <th>Timestamp</th>
-          <th>Image</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let entry of results">
-          <td>{{ entry.plate_read }}</td>
-          <td [ngClass]="entry.status">{{ entry.status }}</td>
-          <td>{{ entry.timestamp }}</td>
-          <td>
-            <img *ngIf="entry.image_path.includes('media')" [src]="entry.image_path" width="120">
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <p *ngIf="results.length === 0">No parking history available for plate {{ plate }}.</p>
+  <div class="mt-6 text-center">
+    <!-- Go Back Button -->
+    <button
+      type="button"
+      (click)="goBack()"
+      class="bg-gradient-to-r from-gray-400 to-gray-600 text-white py-2 px-6 rounded-lg text-lg font-semibold hover:from-gray-500 hover:to-gray-700 transition-all shadow-md hover:shadow-lg"
+    >
+      Go Back
+    </button>
   </div>
+
+  <!-- Table with Parking History -->
+  <table *ngIf="results.length > 0">
+    <thead>
+      <tr>
+        <th>Detected Plate</th>
+        <th>Status</th>
+        <th>Timestamp</th>
+        <th>Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let entry of results">
+        <td>{{ entry.plate_read }}</td>
+        <td [ngClass]="entry.status">{{ entry.status }}</td>
+        <td>{{ entry.timestamp }}</td>
+        <td>
+          <img *ngIf="entry.image_path.includes('media')" [src]="entry.image_path" width="120" />
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- No Results Message -->
+  <p *ngIf="results.length === 0">No parking history available for plate {{ plate }}.</p>
+</div>

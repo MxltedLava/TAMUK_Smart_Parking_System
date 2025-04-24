@@ -1,12 +1,25 @@
 <div class="flex items-center justify-between"> 
-   <div class="container"> 
+  <div class="container"> 
     <h1>Steinke Physical Education Center Parking Lot D</h1> 
     <p>Please take a look at the available parking spots</p> 
     <p>🟨 = Commuter Parking Permit ONLY</p>
     <p>🟦 = Handicap Parking Permit ONLY</p>
     <p>🟪 = <span class="text-red-600 font-bold">NO PARKING ALLOWED</span></p> 
     
-    <button onclick="window.location.href='http://192.168.0.101:1276/smart-parking-frontend/src/app/parkingmap2d/parking-map2d.component.html'"
-    class="w-full py-4 text-xl font-bold bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-700 transition-all">Go Back</button> 
+    <!-- Use Angular RouterLink for better navigation -->
+    <button 
+      [routerLink]="['/parking-map2d']" 
+      class="w-full py-4 text-xl font-bold bg-blue-500 text-white rounded-lg shadow-lg hover:bg-blue-700 transition-all"
+    >
+      Go Back
+    </button> 
   </div> 
-  <img src="../../assets/tamukparking2df.jpg" alt="Parking Map" class="w-1/3 h-auto rounded-lg shadow-lg" width = "600" height = "300"> </div>
+  
+  <img 
+    src="../../assets/tamukparking2df.jpg" 
+    alt="Parking Map" 
+    class="w-1/3 h-auto rounded-lg shadow-lg" 
+    width="600" 
+    height="300" 
+  > 
+</div>

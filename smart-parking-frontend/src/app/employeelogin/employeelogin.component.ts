@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-employee-login',
   templateUrl: './employeelogin.component.html',
   styleUrls: ['./employeelogin.component.css']
 })
-export class LoginComponent {
+export class EmployeeLoginComponent {
   username: string = '';
   password: string = '';
   errorMessage: string = '';
@@ -16,19 +16,19 @@ export class LoginComponent {
   onLogin(event: Event): void {
     event.preventDefault();
 
-    if (this.username === 'admin' && this.password === 'orange') {
-      this.router.navigate(['/parking-selection']);
+    // Example static check — replace with real backend authentication
+    if (this.username === 'employee' && this.password === 'secure') {
+      this.router.navigate(['/employee-menu']);
     } else {
-      this.errorMessage = 'Incorrect Password or Username, please try again!';
+      this.errorMessage = 'Incorrect Username or Password. Please try again.';
     }
   }
 
-  // This method handles redirection for employee login
-  goToEmployeePage(): void {
-    this.router.navigate(['/employee']);  // Adjust route as necessary for employee page
+  goBack(): void {
+    this.router.navigate(['/login']);
   }
 
-  register(): void {
-    this.router.navigate(['/register']);
+  goToEmployeeMenu(): void {
+    this.router.navigate(['/employee-menu']);
   }
 }

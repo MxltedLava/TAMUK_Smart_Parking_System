@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-parking-history',
@@ -7,24 +7,17 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./parking-history.component.css']
 })
 export class ParkingHistoryComponent implements OnInit {
-  plate: string = '';
-  results: any[] = [];
+  results: any[] = [];  // Store parking history results
+  plate: string = '';   // Store the plate number being queried
 
-  constructor(private http: HttpClient) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    const savedPlate = localStorage.getItem('owner_plate');
-    if (savedPlate) {
-      this.plate = savedPlate;
-      this.fetchHistory();
-    }
+    // Initialize your results and plate data here if needed.
   }
 
-  fetchHistory(): void {
-    this.http.get<any[]>(`/api/parking-history?plate=${this.plate}`).subscribe(data => {
-      this.results = data;
-    }, err => {
-      console.error("Failed to load parking history", err);
-    });
+  // Go Back Method for Navigation
+  goBack(): void {
+    this.router.navigate(['/employee-menu']);  // Adjust this based on your actual route
   }
 }

@@ -23,12 +23,15 @@ export class LoginComponent {
     }
   }
 
-  // This method handles redirection for employee login
+  goToStudentMenu(): void {
+    this.router.navigate(['/student-menu']);
+  }
+
   goToEmployeePage(): void {
-    this.router.navigate(['/employee']);  // Adjust route as necessary for employee page
+    this.router.navigate(['/employee']);
   }
 
   register(): void {
-    this.router.navigate(['/register']);
+    this.router.navigate(['/accountregistration']);
   }
 }

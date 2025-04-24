@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-parking-map',
-  templateUrl: './parking-map.component.html',
-  styleUrls: ['./parking-map.component.css']
+  selector: 'app-parking-map2df',
+  templateUrl: './parking-map2df.component.html',
+  styleUrls: ['./parking-map2df.component.css']
 })
-export class ParkingMapComponent {
-  // You can access the route parameter later if needed
+export class ParkingMap2dfComponent {
+  // Any specific logic related to this component can be added here
 }
