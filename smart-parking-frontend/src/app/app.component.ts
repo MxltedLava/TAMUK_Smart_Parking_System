@@ -5,6 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',  // HTML template for AppComponent
   styleUrls: ['./app.component.css']  // Optional CSS for this component
 })
-export class AppComponent {
-  title = 'smart-parking-system';  // Example property, can be used in HTML
-}
+export class AppComponent {}

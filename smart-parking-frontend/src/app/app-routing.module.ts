@@ -19,7 +19,7 @@ import { UpdatePhoneNumberComponent } from './update-phonenumber/update-phonenum
 import { UpdateVehicleRegistrationComponent } from './update-vehicleregistration/update-vehicleregistration'; // Added ".component"
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'employee-menu', component: EmployeeMenuComponent },
   { path: 'clearance-check', component: ClearanceCheckComponent },
