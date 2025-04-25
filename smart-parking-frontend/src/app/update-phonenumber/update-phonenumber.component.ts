@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-phone-number',
-  templateUrl: './update-phonenumber.html',
-  styleUrls: ['./update-phonenumber.css']
+  templateUrl: './update-phonenumber.component.html',
+  styleUrls: ['./update-phonenumber.component.css']
 })
 export class UpdatePhoneNumberComponent {
   phoneNumber: string = ''; // The phone number input value

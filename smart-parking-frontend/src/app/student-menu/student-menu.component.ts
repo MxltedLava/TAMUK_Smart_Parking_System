@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-menu',
-  templateUrl: './student-menu.html',
-  styleUrls: ['./student-menu.css']
+  templateUrl: './student-menu.component.html',
+  styleUrls: ['./student-menu.component.css']
 })
 export class StudentMenuComponent implements OnInit {
 

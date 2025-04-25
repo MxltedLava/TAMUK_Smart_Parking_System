@@ -5,7 +5,7 @@
   "projects": {
     "smart-parking-frontend": {
       "projectType": "application",
-      "root": "",
+      "root": ".",
       "sourceRoot": "src",
       "architect": {
         "build": {

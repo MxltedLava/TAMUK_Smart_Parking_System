@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 // Import all the components used in routes
 import { LoginComponent } from './login/login.component';
 import { EmployeeMenuComponent } from './employee-menu/employee-menu.component';  // Added missing ".component"
+import { EmployeeLoginComponent } from './employeelogin/employeelogin.component';  // Added missing ".component"
 import { ClearanceCheckComponent } from './clearance-check/clearance-check.component';
 import { ParkingHistoryComponent } from './parking-history/parking-history.component';
 import { SecurityDashboardComponent } from './security-dashboard/security-dashboard.component';
@@ -37,6 +37,7 @@ import { UpdateVehicleRegistrationComponent } from './update-vehicleregistration
     RegisterVehicleComponent,
     ParkingMapComponent,
     ParkingMap2Component,
+    EmployeeLoginComponent,
     VehicleRegistrationComponent,
     StudentMenuComponent,
     AccountRegistrationComponent,

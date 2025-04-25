@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vehicle-registration',
-  templateUrl: './vehicle-registration.html',
-  styleUrls: ['./vehicle-registration.css']
+  templateUrl: './vehicle-registration.component.html',
+  styleUrls: ['./vehicle-registration.component.css']
 })
 export class VehicleRegistrationComponent {
   vehicle = {

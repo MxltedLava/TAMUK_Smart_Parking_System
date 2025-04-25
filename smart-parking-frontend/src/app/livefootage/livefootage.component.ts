@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-livefootage',
-  templateUrl: './livefootage.html',
-  styleUrls: ['./livefootage.css']
+  templateUrl: './livefootage.component.html',
+  styleUrls: ['./livefootage.component.css']
 })
 export class LiveFootageComponent {
 
