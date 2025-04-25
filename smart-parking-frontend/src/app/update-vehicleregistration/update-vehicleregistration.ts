@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-vehicle-registration',
-  templateUrl: './update-vehicleregistration.component.html',
-  styleUrls: ['./update-vehicleregistration.component.css']
+  templateUrl: './update-vehicleregistration.html',
+  styleUrls: ['./update-vehicleregistration.css']
 })
 export class UpdateVehicleRegistrationComponent {
   licensePlate: string = ''; // Property to bind to the input field
